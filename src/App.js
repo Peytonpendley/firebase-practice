@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css';
-import { auth } from "./firebase/init"
+import { auth, db } from "./firebase/init"
+import { collection, addDoc } from 'firebase/firestore'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 function App() {
@@ -8,6 +9,14 @@ function App() {
   const [user, setUser] = React.useState({})
   
   const [loading, setLoading] = React.useState(true)
+
+  function createPost() {
+    const post = {
+      title: "land job",
+      description: "finish fes",
+    }
+    addDoc(collection(db, "posts"), post)//this is adding it to the firestore and collection is a reference to where we want to add the data
+  }
 
   React.useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -52,6 +61,7 @@ function App() {
       <button onClick={login}>Login</button>
       <button onClick={logout}>Logout</button>
       {loading ? 'loading...' : user.email}
+      <button onClick={createPost}>Create Post</button>
     </div>
   );
 }
