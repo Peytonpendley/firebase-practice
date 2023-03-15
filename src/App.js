@@ -60,7 +60,7 @@ function App() {
       <button onClick={register}>Register</button>
       <button onClick={login}>Login</button>
       <button onClick={logout}>Logout</button>
-      {loading ? 'loading...' : user.email}
+      
       <button onClick={createPost}>Create Post</button>
     </div>
   );
