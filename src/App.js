@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css';
 import { auth, db } from "./firebase/init"
-import { collection, addDoc, getDocs, doc, getDoc } from 'firebase/firestore'
+import { collection, addDoc, getDocs, doc, getDoc, query, where } from 'firebase/firestore'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 function App() {
@@ -46,10 +46,17 @@ function App() {
 
   async function getPostById() {
     const hardcodedId = "Ir4TlzrgSAJJVkQrDKdx"
-    const postRef = doc(db, "posts", hardcodedId)
+    const postRef = await doc(db, "posts", hardcodedId)
     const postSnap = await getDoc(postRef)
     const post = postSnap.data()
     console.log(post)
+  }
+
+  async function getPostByUid() {
+    const postCollectionRef = await query(
+      collection(db, "posts"),
+      where("uid", "==", user.uid)
+    )
   }
 
   React.useEffect(() => {
