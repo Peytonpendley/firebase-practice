@@ -71,7 +71,7 @@ function App() {
 
   function register() {
     console.log("register")
-    createUserWithEmailAndPassword(auth, 'email@email.com', 'test')
+    createUserWithEmailAndPassword(auth, 'email@email.com', 'test123 ')
       .then((user) => {
         console.log(user)
       })
@@ -81,7 +81,7 @@ function App() {
   }
 
   function login(){
-    signInWithEmailAndPassword(auth, 'email@email.com', 'test123')
+    signInWithEmailAndPassword(auth, 'email@a.com', 'test123')
       .then(({ user }) => {
         console.log(user)//you can also just pass data as a prop and then just do data.user
         setUser(user)
