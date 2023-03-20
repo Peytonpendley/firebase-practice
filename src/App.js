@@ -71,7 +71,7 @@ function App() {
 
   function register() {
     console.log("register")
-    createUserWithEmailAndPassword(auth, 'email@email.com', 'test123')
+    createUserWithEmailAndPassword(auth, 'email@email.com', 'test')
       .then((user) => {
         console.log(user)
       })
