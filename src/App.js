@@ -81,7 +81,7 @@ function App() {
   }
 
   function login(){
-    signInWithEmailAndPassword(auth, 'email@email.com', 'test123', "just 30 more days")
+    signInWithEmailAndPassword(auth, 'email@email.com', 'test123')
       .then(({ user }) => {
         console.log(user)//you can also just pass data as a prop and then just do data.user
         setUser(user)
